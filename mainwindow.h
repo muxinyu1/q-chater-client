@@ -45,8 +45,11 @@ private:
     void process_response(QByteArray& bytes);
     SignUp* sign_up;
     ChatWindow* chat_window;
-
     Style* style;
-
+    QPoint z;
+protected:
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 };
 #endif // MAINWINDOW_H

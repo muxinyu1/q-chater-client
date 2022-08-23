@@ -31,15 +31,15 @@ MainWindow::MainWindow(QWidget *parent)
        this->client->write(acc_psw.toStdString().c_str());
        this->ui->logIn->setText("Waiting...");
        this->ui->logIn->setEnabled(false);
-       this->chat_window->get_ui()->centralwidget->setStyleSheet(QString("QWidget#centralWidget{background-image:url(:/new/patterns/patterns/%1.png);"
-                                                                     "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #%2,stop:1 #%3);"
-                                                                     "background-position:center;}").arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
+       //this->chat_window->get_ui()->centralwidget->setStyleSheet(QString("QWidget#centralWidget{background-image:url(:/new/patterns/patterns/%1.png);"
+       //                                                              "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #%2,stop:1 #%3);"
+       //                                                             "background-position:center;}").arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
     });
     //点击注册label
     connect(this->ui->signUp, &ClickableLabel::clicked, [this]() {
         this->sign_up = new SignUp(this->client, this);
         //ui->signUp->setStyleSheet()
-        this->sign_up->get_ui()->label->setStyleSheet(QString(styleStr).arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
+        //this->sign_up->get_ui()->label->setStyleSheet(QString(styleStr).arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
         this->sign_up->show();
         //TODO:bug，多次点击sign up label会产生多个注册窗口
     });
@@ -56,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
     //*dry<
     connect(this->ui->styleButton, &ClickableLabel::clicked, [this]() {
         this->style->show();
+        this->hide();
     });
 
     connect(style,&Style::sig,this,[this](){
@@ -196,8 +197,9 @@ void MainWindow::process_response(QByteArray& bytes)
                 ++blank_cnt;
             }
         }
-        auto from = std_str.substr(first_blank + 1, second_blank);
+        auto from = std_str.substr(first_blank + 1, second_blank - first_blank - 1);
         auto msg = std_str.substr(second_blank + 1, std_str.size());
+        this->chat_window->recieve(QString(from.c_str()), QString(msg.c_str()));
         //sscanf_s(std_str.c_str(), "d %s %s", from, msg);
         std::cout << "recv_msg: {from: " << from << ", msg: " << msg << "}" << std::endl;
     }
@@ -206,6 +208,26 @@ void MainWindow::process_response(QByteArray& bytes)
         break;
     }
     //qDebug() << QString(bytes);
-
 }
+
+void MainWindow::mouseMoveEvent(QMouseEvent* event)
+{
+    QPoint y = event->globalPos();
+    QPoint x = y - this->z;
+    this->move(x);
+}
+
+void MainWindow::mousePressEvent(QMouseEvent* event)
+{
+    QPoint y = event->globalPos();
+    QPoint x = this->geometry().topLeft();
+    this->z = y - x;
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent* event)
+{
+    this->z = QPoint();
+}
+
+
 

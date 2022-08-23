@@ -29,6 +29,12 @@ SignUp::SignUp(QTcpSocket* client, QWidget *parent) :
     connect(this->ui->signUp, &QPushButton::clicked, [this]() {
        auto acc = this->ui->account->text();
        auto psw = this->ui->password->text();
+       if (acc.contains(' ')) {
+           QApplication::beep();
+           auto pop_up = LoginHint("Account cna't contains blank!");
+           pop_up.exec();
+           return;
+       }
        if (psw != this->ui->confirm_psw->text()) {
            QApplication::beep();
            auto pop_up = LoginHint("Passwords are different!", this);

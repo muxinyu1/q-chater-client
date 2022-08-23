@@ -11,16 +11,18 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
 {
     ui->setupUi(this);
     this->ui->accName->setText(acc_name);
-    this->friends_list = new QListWidget(this->ui->friends_list);
-    this->friends_list->setFrameShape(QFrame::NoFrame);
+    this->friends_list = new QListWidget(this);
+    this->friends_list->setGeometry(this->ui->friends_list->geometry());
     this->friends_list->setFont(QFont(this->ui->send->font().family(), 12));
-    for (int i = 0; i < friends.size(); ++i) {
-        qDebug() << i << ": " << friends[i];
-    }
     auto set = QSet<QString>();
     for (auto& i: friends) {
         if (!set.contains(i)) {
             this->friends_list->addItem(i);
+            //每个好友对应一个chat, 但是初始不显示任何chat
+            auto chats = new QListWidget(this);
+            chats->setGeometry(this->ui->msg_area->geometry());
+            this->list_map->insert(i, chats);
+            this->list_map->value(i)->hide();
             set.insert(i);
         }
     }
@@ -40,6 +42,9 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
         } else if (this->ui->search_friend_edit_text->text() == this->ui->accName->text()) {
             auto pop_up = LoginHint("Can't Add Yourself!", this);
             pop_up.exec();
+        } else if (this->list_map->contains(this->ui->search_friend_edit_text->text())) {
+            auto pop_up = LoginHint("Already Added!", this);
+            pop_up.exec();
         } else {
             QString request = "3 " + this->acc_name + " " + this->ui->search_friend_edit_text->text();
             this->client->write(request.toStdString().c_str());
@@ -49,6 +54,7 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     connect(this->friends_list, &QListWidget::itemClicked, [this](QListWidgetItem* item) {
         this->target_name = item->text();
         this->ui->chat_target->setText(target_name);
+        //对应的chat也得切换
         if (this->current_chat != nullptr) {
             this->current_chat->hide();
         }
@@ -68,7 +74,23 @@ ChatWindow::~ChatWindow()
 void ChatWindow::addFriend(const QString& friend_acc)
 {
     this->friends_list->addItem(friend_acc);
+    auto chats = new QListWidget(this);
+    chats->setGeometry(this->ui->msg_area->geometry());
+    this->list_map->insert(friend_acc, chats);
+    this->list_map->value(friend_acc)->hide();
     this->ui->search_friend_edit_text->clear();
+}
+
+void ChatWindow::recieve(const QString& who, const QString& what)
+{
+    //接受信息
+    if (!this->list_map->contains(who)) {
+        auto chats = new QListWidget(this);
+        chats->setGeometry(this->ui->msg_area->geometry());
+        this->list_map->insert(who, chats);
+    }
+    const auto mapped_chat = this->list_map->value(who);
+    mapped_chat->addItem(new MsgBubble(what, false));
 }
 
 Ui::ChatWindow* ChatWindow::get_ui()
@@ -94,11 +116,37 @@ void ChatWindow::send_msg()
         return;
     }
     char request[2048];
+    this->ui->edit_text->clear();
     //从何而来的消息，去到哪，内容是什么
     sprintf(request, "4 %s %s %s",
             this->acc_name.toStdString().c_str(),
             this->target_name.toStdString().c_str(),
             msg.toStdString().c_str()
             );
+    if (!this->list_map->contains(this->target_name)) {
+        auto chats = new QListWidget(this);
+        chats->setGeometry(this->ui->msg_area->geometry());
+        this->list_map->insert(this->target_name, chats);
+    }
+    this->list_map->value(this->target_name)->addItem(new MsgBubble(msg, true));
     this->client->write(request);
+}
+
+void ChatWindow::mouseMoveEvent(QMouseEvent* event)
+{
+    QPoint y = event->globalPos();
+    QPoint x = y - this->z;
+    this->move(x);
+}
+
+void ChatWindow::mousePressEvent(QMouseEvent* event)
+{
+    QPoint y = event->globalPos();
+    QPoint x = this->geometry().topLeft();
+    this->z = y - x;
+}
+
+void ChatWindow::mouseReleaseEvent(QMouseEvent* event)
+{
+    this->z = QPoint();
 }

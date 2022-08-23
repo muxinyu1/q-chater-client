@@ -338,18 +338,20 @@ background-color: rgba(255, 255, 255, 0);</string>
       <height>231</height>
      </rect>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
     <property name="text">
      <string/>
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <customwidgets>
   <customwidget>
    <class>ClickableLabel</class>
    <extends>QLabel</extends>
-   <header location="global">clickablelabel.h</header>
+   <header>clickablelabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

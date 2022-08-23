@@ -4,7 +4,7 @@
 #include <QListWidgetItem>
 #include <QObject>
 
-class MsgBubble: QListWidgetItem
+class MsgBubble: public QListWidgetItem
 {
 public:
     MsgBubble(QString msg, bool mine);

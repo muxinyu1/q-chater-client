@@ -9,6 +9,7 @@
 #include <QStandardItemModel>
 #include <QTcpSocket>
 
+#include "msgbubble.h"
 #include "loginhint.h"
 
 namespace Ui {
@@ -26,6 +27,7 @@ public:
                         QWidget *parent = nullptr);
     ~ChatWindow();
     void addFriend(const QString& friend_acc);
+    void recieve(const QString& who, const QString& what);
     Ui::ChatWindow* get_ui();
 private:
     Ui::ChatWindow *ui;
@@ -35,8 +37,13 @@ private:
     QString target_name;
     QListWidget* current_chat;
     QHash<QString, QListWidget*>* list_map;
+    QPoint z;
 private slots:
     void send_msg();
+protected:
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 };
 
 #endif // CHATWINDOW_H
