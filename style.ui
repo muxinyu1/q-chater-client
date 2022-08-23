@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>577</width>
-    <height>407</height>
+    <width>597</width>
+    <height>439</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -31,15 +31,15 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>10</y>
+     <x>30</x>
+     <y>21</y>
      <width>526</width>
      <height>120</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <spacer name="verticalSpacer">
+    <item row="3" column="0">
+     <spacer name="verticalSpacer_2">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
@@ -54,8 +54,8 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="2">
-     <widget class="ClickableLabel" name="pattern_2">
+    <item row="4" column="8">
+     <widget class="ClickableLabel" name="pattern_17">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -72,40 +72,31 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>DeepOcean</string>
+       <string>Zoo</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="ClickableLabel" name="pattern_1">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <bold>false</bold>
-       </font>
+    <item row="0" column="9">
+     <spacer name="horizontalSpacer_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string>Fantasy</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
+     </spacer>
     </item>
-    <item row="0" column="10">
-     <widget class="ClickableLabel" name="pattern_6">
+    <item row="2" column="2">
+     <widget class="ClickableLabel" name="pattern_8">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -122,82 +113,7 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Leisure</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="8">
-     <widget class="ClickableLabel" name="pattern_5">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string>Fairytale</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="ClickableLabel" name="pattern_7">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string>Childhood</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="6">
-     <widget class="ClickableLabel" name="pattern_4">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string>Galaxy</string>
+       <string>Ice</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -229,8 +145,8 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="2">
-     <widget class="ClickableLabel" name="pattern_14">
+    <item row="4" column="10">
+     <widget class="ClickableLabel" name="pattern_18">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -247,15 +163,31 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Christmas</string>
+       <string>Creature</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <widget class="ClickableLabel" name="pattern_13">
+    <item row="1" column="0">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>10</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="4">
+     <widget class="ClickableLabel" name="pattern_15">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -272,7 +204,7 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Aerospace</string>
+       <string>Magic</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -304,8 +236,8 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="4">
-     <widget class="ClickableLabel" name="pattern_15">
+    <item row="2" column="6">
+     <widget class="ClickableLabel" name="pattern_10">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -322,15 +254,15 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Magic</string>
+       <string>Paris</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="2" column="4">
-     <widget class="ClickableLabel" name="pattern_9">
+    <item row="0" column="2">
+     <widget class="ClickableLabel" name="pattern_2">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -347,15 +279,15 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Game</string>
+       <string>DeepOcean</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="2" column="8">
-     <widget class="ClickableLabel" name="pattern_11">
+    <item row="0" column="8">
+     <widget class="ClickableLabel" name="pattern_5">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -372,7 +304,114 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Math</string>
+       <string>Fairytale</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="10">
+     <widget class="ClickableLabel" name="pattern_6">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>Leisure</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="2">
+     <widget class="ClickableLabel" name="pattern_14">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>Christmas</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="0">
+     <widget class="ClickableLabel" name="pattern_1">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>Fantasy</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -404,8 +443,24 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="2">
-     <widget class="ClickableLabel" name="pattern_8">
+    <item row="0" column="7">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="0">
+     <widget class="ClickableLabel" name="pattern_13">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -422,15 +477,15 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Ice</string>
+       <string>Aerospace</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="2" column="6">
-     <widget class="ClickableLabel" name="pattern_10">
+    <item row="0" column="6">
+     <widget class="ClickableLabel" name="pattern_4">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -447,15 +502,15 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Paris</string>
+       <string>Galaxy</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="4" column="10">
-     <widget class="ClickableLabel" name="pattern_18">
+    <item row="2" column="8">
+     <widget class="ClickableLabel" name="pattern_11">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -472,32 +527,7 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>Creature</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="8">
-     <widget class="ClickableLabel" name="pattern_17">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string>Zoo</string>
+       <string>Math</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -520,95 +550,65 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="7">
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="2" column="0">
+     <widget class="ClickableLabel" name="pattern_7">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <bold>false</bold>
+       </font>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>10</width>
-        <height>20</height>
-       </size>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
-     </spacer>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>Childhood</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </item>
-    <item row="0" column="9">
-     <spacer name="horizontalSpacer_5">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="2" column="4">
+     <widget class="ClickableLabel" name="pattern_9">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <bold>false</bold>
+       </font>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>10</width>
-        <height>20</height>
-       </size>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
-     </spacer>
-    </item>
-    <item row="0" column="3">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
+      <property name="text">
+       <string>Game</string>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>10</width>
-        <height>20</height>
-       </size>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
-     </spacer>
-    </item>
-    <item row="0" column="5">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>10</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="3" column="0">
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>10</height>
-       </size>
-      </property>
-     </spacer>
+     </widget>
     </item>
    </layout>
   </widget>
   <widget class="QWidget" name="gridLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>149</y>
+     <x>30</x>
+     <y>160</y>
      <width>241</width>
-     <height>201</height>
+     <height>208</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
@@ -828,14 +828,14 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>150</y>
+     <x>320</x>
+     <y>161</y>
      <width>200</width>
      <height>200</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-color: rgb(0, 0, 0);
+    <string notr="true">border: 1px solid black;
 border-radius:100px;
 </string>
    </property>
@@ -844,10 +844,13 @@ border-radius:100px;
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_apply">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>362</y>
+     <x>360</x>
+     <y>373</y>
      <width>75</width>
      <height>31</height>
     </rect>
@@ -860,17 +863,16 @@ border-radius:100px;
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color: rgb(255,255,255);
 	padding: 2px;
 	background-color:  rgba(255, 255, 255, 0);
-	border-color: rgb(0, 0, 0);
+	border: 1px solid black;
 	color: rgb(0, 0, 0);
 	border-radius: 0px;
 }
 QPushButton:hover{
 	color: rgb(255, 255, 255);
 	padding: 2px;
-	border-color: black;
+	border: 1px solid black;
 	background-color: rgb(0, 0, 0);
 }</string>
    </property>
@@ -879,10 +881,13 @@ QPushButton:hover{
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_cancel">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>362</y>
+     <x>450</x>
+     <y>373</y>
      <width>75</width>
      <height>31</height>
     </rect>
@@ -895,22 +900,43 @@ QPushButton:hover{
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-	color: rgb(255,255,255);
+	color: rgb(0,0,0);
 	padding: 2px;
 	background-color:  rgba(255, 255, 255, 0);
-	border-color: rgb(0, 0, 0);
-	color: rgb(0, 0, 0);
+	border: 1px solid black;
 	border-radius: 0px;
 }
 QPushButton:hover{
 	color: rgb(255, 255, 255);
 	padding: 2px;
-	border-color: black;
+	border: 1px solid black;
 	background-color: rgb(0, 0, 0);
 }</string>
    </property>
    <property name="text">
     <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="windowBorder">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>597</width>
+     <height>439</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

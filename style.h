@@ -49,6 +49,11 @@ private slots:
 
 private:
     Ui::Style *ui;
+    QPoint z;
+protected:
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
 signals:
     void sig();

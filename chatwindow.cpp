@@ -4,6 +4,7 @@
 ChatWindow::ChatWindow(const QVector<QString>& friends,
                        const QString& acc_name,
                        QTcpSocket* client,
+                       const QString& style_sheet,
                        QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ChatWindow), friends_list(nullptr), client(client), acc_name(acc_name),
@@ -12,7 +13,13 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     , animation_minimize(new QPropertyAnimation(this, "windowOpacity"))
 {
     ui->setupUi(this);
+    this->setStyleSheet(style_sheet);
+    //有背景的话，输入框加个边框
+    if (style_sheet != "") {
+        this->ui->edit_text->setFrameStyle(QFrame::Box);
+    }
     this->ui->accName->setText(acc_name);
+    //this->ui->accName->adjustSize();
     this->friends_list = new QListWidget(this);
     this->friends_list->setGeometry(this->ui->friends_list->geometry());
     this->friends_list->setFont(QFont(this->ui->send->font().family(), 12));
@@ -82,6 +89,7 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     connect(this->friends_list, &QListWidget::itemClicked, [this](QListWidgetItem* item) {
         this->target_name = item->text();
         this->ui->chat_target->setText(target_name);
+        //this->ui->chat_target->adjustSize();
         //对应的chat也得切换
         if (this->current_chat != nullptr) {
             this->current_chat->hide();

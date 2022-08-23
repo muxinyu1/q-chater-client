@@ -9,12 +9,16 @@ Style::Style(QWidget *parent) :
     this->setWindowFlags(Qt::FramelessWindowHint);
     QIntValidator* IntValidator = new QIntValidator;
     IntValidator->setRange(0, 255);
+
     ui->lineEdit->setValidator(IntValidator);
     ui->lineEdit_2->setValidator(IntValidator);
     ui->lineEdit_3->setValidator(IntValidator);
     ui->lineEdit_4->setValidator(IntValidator);
     ui->lineEdit_5->setValidator(IntValidator);
     ui->lineEdit_6->setValidator(IntValidator);
+
+    //边框线置于最底层
+    this->ui->windowBorder->lower();
 
     connect(this->ui->pattern_1, &ClickableLabel::clicked, [=]() {
         _file="1";
@@ -99,8 +103,8 @@ Style::~Style()
 
 void Style::setLabelStyle()
 {
-    auto base = QString("border-color: black;border-radius:100px;");
-    ui->label->setStyleSheet(QString(styleStr).arg(_file).arg(_r1+_g1+_b1).arg(_r2+_g2+_b2).arg(base));
+    //auto base = QString("border-color: black;border-radius:100px;");
+    ui->label->setStyleSheet(QString(styleStr).arg(_file).arg(_r1+_g1+_b1).arg(_r2+_g2+_b2));
 }
 
 void Style::on_horizontalSlider_valueChanged(int value)
@@ -205,4 +209,23 @@ void Style::on_pushButton_apply_clicked()
 void Style::on_pushButton_cancel_clicked()
 {
     this->hide();
+}
+
+void Style::mouseMoveEvent(QMouseEvent* event)
+{
+    QPoint y = event->globalPos();
+    QPoint x = y - this->z;
+    this->move(x);
+}
+
+void Style::mousePressEvent(QMouseEvent* event)
+{
+    QPoint y = event->globalPos();
+    QPoint x = this->geometry().topLeft();
+    this->z = y - x;
+}
+
+void Style::mouseReleaseEvent(QMouseEvent* event)
+{
+    this->z = QPoint();
 }

@@ -158,10 +158,12 @@ void MainWindow::process_response(QByteArray& bytes)
             friends.push_back(friend_acc.c_str());
         }
         friends.pop_back();
-        chat_window = new ChatWindow(friends, this->ui->account->text(), this->client);
-        this->chat_window->get_ui()->centralwidget->setStyleSheet(QString("QWidget#centralWidget{background-image:url(:/new/patterns/patterns/%1.png);"
-                                                                      "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #%2,stop:1 #%3);"
-                                                                     "background-position:center;}").arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
+        chat_window = new ChatWindow(friends, this->ui->account->text(), this->client, this->ui->window_border->styleSheet() != ""? QString("QLabel#windowBorder{background-image:url(:/new/patterns/patterns/%1.png);"
+                                                                                               "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #%2,stop:1 #%3);"
+                                                                                               "background-position:center;}").arg(file).arg(r1+g1+b1).arg(r2+g2+b2):"");
+        //this->chat_window->get_ui()->centralwidget->setStyleSheet(QString("QWidget#centralWidget{background-image:url(:/new/patterns/patterns/%1.png);"
+        //                                                              "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #%2,stop:1 #%3);"
+        //                                                             "background-position:center;}").arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
         this->hide();
         chat_window->show();
     }

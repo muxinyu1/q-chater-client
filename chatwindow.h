@@ -25,7 +25,9 @@ public:
     explicit ChatWindow(const QVector<QString>& friends,
                         const QString& acc_name,
                         QTcpSocket* client,
-                        QWidget *parent = nullptr);
+                        const QString& style_sheet,
+                        QWidget *parent = nullptr
+                        );
     ~ChatWindow();
     void addFriend(const QString& friend_acc);
     void recieve(const QString& who, const QString& what);
