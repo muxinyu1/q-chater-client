@@ -634,7 +634,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(:/img/admin_icon.png);</string>
+     <string notr="true">image:url(:/img/admin_icon.png);
+background-color: rgb(255, 255, 255);
+border-radius:40px;</string>
     </property>
     <property name="text">
      <string/>
@@ -774,7 +776,9 @@ QPushButton:disabled{
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:#878787;</string>
+     <string notr="true">color:#878787;
+background-color: rgb(255, 255, 255);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>Sign Up</string>
@@ -802,7 +806,9 @@ QPushButton:disabled{
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:#878787;</string>
+     <string notr="true">color:#878787;
+background-color: rgb(255, 255, 255);
+border-radius:10px;</string>
     </property>
     <property name="text">
      <string>Style</string>

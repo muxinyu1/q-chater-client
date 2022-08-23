@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , can_login(false), button1(new QPushButton()), button2(new QPushButton()), ui(new Ui::MainWindow)
     , log_in(new LoginWidget(this)), client(new QTcpSocket(this)), sign_up(nullptr), chat_window(nullptr)
-    , style(new Style(this)), animation_close(new QPropertyAnimation(this, "windowOpacity"))
+    , style(new Style()), animation_close(new QPropertyAnimation(this, "windowOpacity"))
     , animation_minimize(new QPropertyAnimation(this, "windowOpacity"))
 {
 
@@ -70,8 +70,9 @@ MainWindow::MainWindow(QWidget *parent)
     //*dry<
     connect(this->ui->styleButton, &ClickableLabel::clicked, [this]() {
         this->style->show();
-        this->hide();
     });
+
+    //connect(this->style, &QWidget::close, this, &QMainWindow::show);
 
     connect(style,&Style::sig,this,[this](){
         this->ui->window_border->setStyleSheet(QString("QLabel#window_border{background-image:url(:/new/patterns/patterns/%1.png);"
