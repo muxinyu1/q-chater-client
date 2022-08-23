@@ -17,3 +17,17 @@ LoginHint::~LoginHint()
 {
     delete ui;
 }
+
+void LoginHint::keyPressEvent(QKeyEvent* event)
+{
+    switch (event->key()) {
+    case Qt::Key_Enter:
+        this->ui->ok->click();
+        break;
+    case Qt::Key_Return:
+        this->ui->ok->click();
+        break;
+    default:
+        break;
+    }
+}

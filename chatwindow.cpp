@@ -30,20 +30,29 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     }
     this->setWindowFlag(Qt::FramelessWindowHint);
     //点击×关闭窗口
-    connect(this->animation_close, &QPropertyAnimation::finished, [this]() {
-        char request[1024];
-        sprintf(request, "5 %s", this->acc_name.toStdString().c_str());
-        this->client->write(request);
-        this->close();
+    connect(this->ui->close, &QPushButton::clicked, [this]() {
+       char request[1024];
+       sprintf(request, "5 %s", this->acc_name.toStdString().c_str());
+       this->client->write(request);
+       this->close();
     });
-    connect(this->ui->close, &ClickableLabel::clicked, [this]() {
-        this->animation_close->setDuration(100);
-        this->animation_close->setStartValue(1);
-        this->animation_close->setEndValue(0);
-        this->animation_close->start();
-    });
+//    //动画结束后关闭窗口，并发送注销请求
+//    connect(this->animation_close, &QPropertyAnimation::finished, [this]() {
+//        char request[1024];
+//        sprintf(request, "5 %s", this->acc_name.toStdString().c_str());
+//        this->client->write(request);
+//        qDebug() << request;
+//        this->close();
+//    });
+//    //点击close开始渐变动画
+//    connect(this->ui->close, &ClickableLabel::clicked, [this]() {
+//        this->animation_close->setDuration(100);
+//        this->animation_close->setStartValue(1);
+//        this->animation_close->setEndValue(0);
+//        this->animation_close->start();
+//    });
     //点击-最小化窗口
-    connect(this->ui->minimize, &ClickableLabel::clicked, [this]() {
+    connect(this->ui->minimize, &QPushButton::clicked, [this]() {
         this->animation_minimize->setDuration(100);
         this->animation_minimize->setStartValue(1);
         this->animation_minimize->setEndValue(0);
@@ -54,7 +63,7 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
         this->setProperty("windowOpacity", 1);
     });
     //添加好友
-    connect(this->ui->add, &ClickableLabel::clicked, [this]() {
+    connect(this->ui->add, &QPushButton::clicked, [this]() {
         if (this->ui->search_friend_edit_text->text() == "") {
             auto pop_up = LoginHint("Empty Account!", this);
             pop_up.exec();
@@ -81,7 +90,7 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
         this->current_chat->show();
     });
     //发送消息
-    connect(this->ui->send, &ClickableLabel::clicked,this, &ChatWindow::send_msg);
+    connect(this->ui->send, &QPushButton::clicked,this, &ChatWindow::send_msg);
     //ui->scrollAreaWidgetContents.
 }
 
@@ -172,4 +181,18 @@ void ChatWindow::mousePressEvent(QMouseEvent* event)
 void ChatWindow::mouseReleaseEvent(QMouseEvent* event)
 {
     this->z = QPoint();
+}
+
+void ChatWindow::keyPressEvent(QKeyEvent* event)
+{
+    switch (event->key()) {
+    case Qt::Key_Enter:
+        this->ui->send->click();
+        break;
+    case Qt::Key_Return:
+        this->ui->send->click();
+        break;
+    default:
+        break;
+    }
 }

@@ -23,14 +23,14 @@ MainWindow::MainWindow(QWidget *parent)
     });
     //点击×关闭窗口
     connect(this->animation_close, &QPropertyAnimation::finished, this, &QMainWindow::close);
-    connect(this->ui->closeWindow, &ClickableLabel::clicked, [this]() {
+    connect(this->ui->closeWindow, &QPushButton::clicked, [this]() {
         this->animation_close->setDuration(100);
         this->animation_close->setStartValue(1);
         this->animation_close->setEndValue(0);
         this->animation_close->start();
     });
     //点击-最小化窗口
-    connect(this->ui->minimizeWindow, &ClickableLabel::clicked, [this]() {
+    connect(this->ui->minimizeWindow, &QPushButton::clicked, [this]() {
         this->animation_minimize->setDuration(100);
         this->animation_minimize->setStartValue(1);
         this->animation_minimize->setEndValue(0);
@@ -47,9 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
        this->client->write(acc_psw.toStdString().c_str());
        this->ui->logIn->setText("Waiting...");
        this->ui->logIn->setEnabled(false);
-       //this->chat_window->get_ui()->centralwidget->setStyleSheet(QString("QWidget#centralWidget{background-image:url(:/new/patterns/patterns/%1.png);"
-       //                                                              "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #%2,stop:1 #%3);"
-       //                                                             "background-position:center;}").arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
+
     });
     //点击注册label
     connect(this->ui->signUp, &ClickableLabel::clicked, [this]() {
@@ -160,6 +158,9 @@ void MainWindow::process_response(QByteArray& bytes)
         }
         friends.pop_back();
         chat_window = new ChatWindow(friends, this->ui->account->text(), this->client);
+        this->chat_window->get_ui()->centralwidget->setStyleSheet(QString("QWidget#centralWidget{background-image:url(:/new/patterns/patterns/%1.png);"
+                                                                      "background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #%2,stop:1 #%3);"
+                                                                     "background-position:center;}").arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
         this->hide();
         chat_window->show();
     }
@@ -243,6 +244,24 @@ void MainWindow::mousePressEvent(QMouseEvent* event)
 void MainWindow::mouseReleaseEvent(QMouseEvent* event)
 {
     this->z = QPoint();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent* event)
+{
+    switch (event->key()) {
+    case Qt::Key_Enter:
+        if (this->ui->account->text().size() && this->ui->password->text().size()) {
+            this->ui->logIn->click();
+        }
+        break;
+    case Qt::Key_Return:
+        if (this->ui->account->text().size() && this->ui->password->text().size()) {
+            this->ui->logIn->click();
+        }
+        break;
+    default:
+        break;
+    }
 }
 
 

@@ -2,6 +2,7 @@
 #define LOGINHINT_H
 
 #include <QDialog>
+#include <QKeyEvent>
 
 namespace Ui {
 class LoginHint;
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::LoginHint *ui;
+protected:
+    void keyPressEvent(QKeyEvent* event) override;
 };
 
 #endif // LOGINHINT_H
