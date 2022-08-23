@@ -8,6 +8,8 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     QMainWindow(parent),
     ui(new Ui::ChatWindow), friends_list(nullptr), client(client), acc_name(acc_name),
     target_name(), current_chat(nullptr), list_map(new QHash<QString, QListWidget*>())
+    , animation_close(new QPropertyAnimation(this, "windowOpacity"))
+    , animation_minimize(new QPropertyAnimation(this, "windowOpacity"))
 {
     ui->setupUi(this);
     this->ui->accName->setText(acc_name);
@@ -27,13 +29,30 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
         }
     }
     this->setWindowFlag(Qt::FramelessWindowHint);
-    connect(this->ui->close, &ClickableLabel::clicked, [this]() {
+    //点击×关闭窗口
+    connect(this->animation_close, &QPropertyAnimation::finished, [this]() {
         char request[1024];
         sprintf(request, "5 %s", this->acc_name.toStdString().c_str());
         this->client->write(request);
         this->close();
     });
-    connect(this->ui->minimize, &ClickableLabel::clicked, this, &QMainWindow::showMinimized);
+    connect(this->ui->close, &ClickableLabel::clicked, [this]() {
+        this->animation_close->setDuration(100);
+        this->animation_close->setStartValue(1);
+        this->animation_close->setEndValue(0);
+        this->animation_close->start();
+    });
+    //点击-最小化窗口
+    connect(this->ui->minimize, &ClickableLabel::clicked, [this]() {
+        this->animation_minimize->setDuration(100);
+        this->animation_minimize->setStartValue(1);
+        this->animation_minimize->setEndValue(0);
+        this->animation_minimize->start();
+    });
+    connect(this->animation_minimize, &QPropertyAnimation::finished, [this]() {
+        this->showMinimized();
+        this->setProperty("windowOpacity", 1);
+    });
     //添加好友
     connect(this->ui->add, &ClickableLabel::clicked, [this]() {
         if (this->ui->search_friend_edit_text->text() == "") {
@@ -123,9 +142,13 @@ void ChatWindow::send_msg()
             this->target_name.toStdString().c_str(),
             msg.toStdString().c_str()
             );
+    //如果当前好友还没有与之对应的聊天窗口
     if (!this->list_map->contains(this->target_name)) {
+        //就创建一个
         auto chats = new QListWidget(this);
+        //大小和msg_area一样（msg_area是预设好的空的Qlabel）
         chats->setGeometry(this->ui->msg_area->geometry());
+        //创建完了，加到map中
         this->list_map->insert(this->target_name, chats);
     }
     this->list_map->value(this->target_name)->addItem(new MsgBubble(msg, true));

@@ -12,6 +12,7 @@
 #include <memory>
 #include <sstream>
 #include <iostream>
+#include <QPropertyAnimation>
 #include "chatwindow.h"
 #include "loginhint.h"
 #include "signup.h"
@@ -47,6 +48,8 @@ private:
     ChatWindow* chat_window;
     Style* style;
     QPoint z;
+    QPropertyAnimation* animation_close;
+    QPropertyAnimation* animation_minimize;
 protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;

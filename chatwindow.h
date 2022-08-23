@@ -8,6 +8,7 @@
 #include <QListWidget>
 #include <QStandardItemModel>
 #include <QTcpSocket>
+#include <QPropertyAnimation>
 
 #include "msgbubble.h"
 #include "loginhint.h"
@@ -38,6 +39,8 @@ private:
     QListWidget* current_chat;
     QHash<QString, QListWidget*>* list_map;
     QPoint z;
+    QPropertyAnimation* animation_close;
+    QPropertyAnimation* animation_minimize;
 private slots:
     void send_msg();
 protected:

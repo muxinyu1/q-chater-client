@@ -5,13 +5,14 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , can_login(false), button1(new QPushButton()), button2(new QPushButton()), ui(new Ui::MainWindow)
     , log_in(new LoginWidget(this)), client(new QTcpSocket(this)), sign_up(nullptr), chat_window(nullptr)
-    , style(new Style(this))
+    , style(new Style(this)), animation_close(new QPropertyAnimation(this, "windowOpacity"))
+    , animation_minimize(new QPropertyAnimation(this, "windowOpacity"))
 {
 
     this->ui->setupUi(this);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->style->hide();
-    client->connectToHost(QHostAddress("127.0.0.1"), 8899);
+    client->connectToHost(QHostAddress("172.18.237.69"), 8899);
     //客户端响应服务器
     connect(client, &QTcpSocket::readyRead, [this]() {
         auto recv = this->client->readAll();
@@ -21,9 +22,24 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
     //点击×关闭窗口
-    connect(this->ui->closeWindow, &ClickableLabel::clicked, this, &QMainWindow::close);
+    connect(this->animation_close, &QPropertyAnimation::finished, this, &QMainWindow::close);
+    connect(this->ui->closeWindow, &ClickableLabel::clicked, [this]() {
+        this->animation_close->setDuration(100);
+        this->animation_close->setStartValue(1);
+        this->animation_close->setEndValue(0);
+        this->animation_close->start();
+    });
     //点击-最小化窗口
-    connect(this->ui->minimizeWindow, &ClickableLabel::clicked, this, &QMainWindow::showMinimized);
+    connect(this->ui->minimizeWindow, &ClickableLabel::clicked, [this]() {
+        this->animation_minimize->setDuration(100);
+        this->animation_minimize->setStartValue(1);
+        this->animation_minimize->setEndValue(0);
+        this->animation_minimize->start();
+    });
+    connect(this->animation_minimize, &QPropertyAnimation::finished, [this]() {
+        this->showMinimized();
+        this->setProperty("windowOpacity", 1);
+    });
     //点击登录，同时disable登录按钮
     connect(this->ui->logIn, &QPushButton::clicked, [this](){
        QString acc_psw = Utility::get_string_of_request_type(RequestType::LOGIN) + " " + this->ui->account->text() + " " + this->ui->password->text();
