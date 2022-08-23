@@ -53,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this->ui->signUp, &ClickableLabel::clicked, [this]() {
         this->sign_up = new SignUp(this->client, this);
         //ui->signUp->setStyleSheet()
-        //this->sign_up->get_ui()->label->setStyleSheet(QString(styleStr).arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
+        this->sign_up->get_ui()->label->setStyleSheet(QString(styleStr).arg(file).arg(r1+g1+b1).arg(r2+g2+b2));
         this->sign_up->show();
         //TODO:bug，多次点击sign up label会产生多个注册窗口
     });
