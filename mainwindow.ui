@@ -841,6 +841,7 @@ border-radius:10px;</string>
 	border-color: rgb(0, 0, 0);
 	color: rgb(0, 0, 0);
 	border-radius: 0px;
+	
 }
 QPushButton:hover{
 	color: rgb(255, 255, 255);

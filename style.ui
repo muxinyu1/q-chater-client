@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>818</width>
-    <height>1102</height>
+    <width>577</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>818</width>
-    <height>1102</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -26,14 +26,14 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>491</width>
+     <width>526</width>
      <height>120</height>
     </rect>
    </property>
@@ -59,7 +59,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -67,7 +66,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>DeepOcean</string>
@@ -82,7 +84,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -90,7 +91,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Fantasy</string>
@@ -105,7 +109,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -113,7 +116,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Leisure</string>
@@ -128,7 +134,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -136,7 +141,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Fairytale</string>
@@ -151,7 +159,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -159,7 +166,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Childhood</string>
@@ -174,7 +184,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -182,7 +191,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Galaxy</string>
@@ -197,7 +209,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -205,7 +216,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Space</string>
@@ -220,7 +234,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -228,7 +241,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Christmas</string>
@@ -243,7 +259,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -251,7 +266,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Aerospace</string>
@@ -266,7 +284,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -274,7 +291,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Birthday</string>
@@ -289,7 +309,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -297,7 +316,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Magic</string>
@@ -312,7 +334,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -320,7 +341,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Game</string>
@@ -335,7 +359,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -343,7 +366,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Math</string>
@@ -358,7 +384,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -366,7 +391,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Devil</string>
@@ -381,7 +409,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -389,7 +416,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Ice</string>
@@ -404,7 +434,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -412,7 +441,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Paris</string>
@@ -427,7 +459,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -435,7 +466,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Creature</string>
@@ -450,7 +484,6 @@
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
-        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -458,7 +491,10 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:#878787;</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
       <property name="text">
        <string>Zoo</string>
@@ -578,6 +614,9 @@
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <widget class="QSlider" name="horizontalSlider">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="maximum">
        <number>255</number>
       </property>
@@ -796,7 +835,9 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">border-color: rgb(0, 0, 0);
+border-radius:100px;
+</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -806,10 +847,32 @@
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>370</y>
+     <y>362</y>
      <width>75</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color: rgb(255,255,255);
+	padding: 2px;
+	background-color:  rgba(255, 255, 255, 0);
+	border-color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0);
+	border-radius: 0px;
+}
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	padding: 2px;
+	border-color: black;
+	background-color: rgb(0, 0, 0);
+}</string>
    </property>
    <property name="text">
     <string>Apply</string>
@@ -819,10 +882,32 @@
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>370</y>
+     <y>362</y>
      <width>75</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	color: rgb(255,255,255);
+	padding: 2px;
+	background-color:  rgba(255, 255, 255, 0);
+	border-color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0);
+	border-radius: 0px;
+}
+QPushButton:hover{
+	color: rgb(255, 255, 255);
+	padding: 2px;
+	border-color: black;
+	background-color: rgb(0, 0, 0);
+}</string>
    </property>
    <property name="text">
     <string>Cancel</string>

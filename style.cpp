@@ -6,9 +6,9 @@ Style::Style(QWidget *parent) :
     ui(new Ui::Style)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::FramelessWindowHint);
     QIntValidator* IntValidator = new QIntValidator;
     IntValidator->setRange(0, 255);
-
     ui->lineEdit->setValidator(IntValidator);
     ui->lineEdit_2->setValidator(IntValidator);
     ui->lineEdit_3->setValidator(IntValidator);
@@ -99,7 +99,8 @@ Style::~Style()
 
 void Style::setLabelStyle()
 {
-    ui->label->setStyleSheet(QString(styleStr).arg(_file).arg(_r1+_g1+_b1).arg(_r2+_g2+_b2));
+    auto base = QString("border-color: black;border-radius:100px;");
+    ui->label->setStyleSheet(QString(styleStr).arg(_file).arg(_r1+_g1+_b1).arg(_r2+_g2+_b2).arg(base));
 }
 
 void Style::on_horizontalSlider_valueChanged(int value)
