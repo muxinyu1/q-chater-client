@@ -10,9 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     this->ui->setupUi(this);
+    this->setWindowIcon(QIcon("/img/icon.png"));
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->style->hide();
-    client->connectToHost(QHostAddress("172.18.237.69"), 8899);
+    client->connectToHost(QHostAddress("127.0.0.1"), 8899);
     //客户端响应服务器
     connect(client, &QTcpSocket::readyRead, [this]() {
         auto recv = this->client->readAll();
@@ -219,10 +220,33 @@ void MainWindow::process_response(QByteArray& bytes)
         }
         auto from = std_str.substr(first_blank + 1, second_blank - first_blank - 1);
         auto msg = std_str.substr(second_blank + 1, std_str.size());
-        this->chat_window->recieve(QString(from.c_str()), QString(msg.c_str()));
+        this->chat_window->recieve(from._Starts_with("__group__")?
+                                       QString(from.substr(9, from.size()).c_str()):
+                                       QString(from.c_str())
+                                   ,QString(msg.c_str()));
         //sscanf_s(std_str.c_str(), "d %s %s", from, msg);
         std::cout << "recv_msg: {from: " << from << ", msg: " << msg << "}" << std::endl;
     }
+        break;
+    case 'e':
+        {
+            qDebug() << "ready to join a group";
+            int status;
+            sscanf_s(std_str.c_str(), "e %d", &status);
+            qDebug() << QString("status = %1").arg(status);
+            if (!status) {
+                //已经存在这个群聊
+                auto pop_up = LoginHint("Group Has Been Existed!", this);
+                QApplication::beep();
+                pop_up.exec();
+                break;
+            }
+            auto group_name = QString::fromStdString(std_str.substr(4, std_str.size()));
+            qDebug() << "\"fake\" group name: " << group_name;
+            this->chat_window->addFriend(group_name);
+            auto pop_up = LoginHint("Created!");
+            pop_up.exec();
+        }
         break;
     default:
         break;

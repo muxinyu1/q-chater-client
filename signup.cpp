@@ -6,6 +6,7 @@ SignUp::SignUp(QTcpSocket* client, QWidget *parent) :
     ui(new Ui::SignUp), client(client)
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon("/img/icon.png"));
 //    client->connectToHost(QHostAddress("127.0.0.1"), 8899);
     //按×关闭注册窗口
     connect(this->ui->close, &ClickableLabel::clicked, this, &QMainWindow::close);

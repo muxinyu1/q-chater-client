@@ -6,6 +6,7 @@ LoginHint::LoginHint(const QString& msg, QWidget *parent) :
     ui(new Ui::LoginHint)
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon("/img/icon.png"));
     this->ui->info->setText(msg);
     connect(this->ui->ok, &QPushButton::clicked, [this]() {
         //QApplication::beep();

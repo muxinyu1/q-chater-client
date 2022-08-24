@@ -6,6 +6,8 @@
         <file>close.png</file>
         <file>minimize.png</file>
         <file>minimize_thin.png</file>
+        <file>group_icon.png</file>
+        <file>icon.png</file>
     </qresource>
     <qresource prefix="/qss"/>
     <qresource prefix="/new/patterns">

@@ -11,8 +11,11 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     target_name(), current_chat(nullptr), list_map(new QHash<QString, QListWidget*>())
     , animation_close(new QPropertyAnimation(this, "windowOpacity"))
     , animation_minimize(new QPropertyAnimation(this, "windowOpacity"))
+    , create_group(nullptr)
+    , group_set(new QSet<QString>())
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon("/img/icon.png"));
     this->setStyleSheet(style_sheet);
     //有背景的话，输入框加个边框
     if (style_sheet != "") {
@@ -26,6 +29,18 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     auto set = QSet<QString>();
     for (auto& i: friends) {
         if (!set.contains(i)) {
+            if (i.startsWith("__group__")) {
+                auto real_name = QString(i.toStdString().substr(9, i.size()).c_str());
+                //加入组set，以便发送信息时区分
+                this->group_set->insert(real_name);
+                this->friends_list->addItem(new QListWidgetItem(QIcon(":/img/group_icon.png"), real_name));
+                auto chats = new QListWidget(this);
+                chats->setGeometry(this->ui->msg_area->geometry());
+                this->list_map->insert(real_name, chats);
+                this->list_map->value(real_name)->hide();
+                set.insert(real_name);
+                continue;
+            }
             this->friends_list->addItem(i);
             //每个好友对应一个chat, 但是初始不显示任何chat
             auto chats = new QListWidget(this);
@@ -100,6 +115,25 @@ ChatWindow::ChatWindow(const QVector<QString>& friends,
     //发送消息
     connect(this->ui->send, &QPushButton::clicked,this, &ChatWindow::send_msg);
     //ui->scrollAreaWidgetContents.
+    //点击+创建群组
+    connect(this->ui->creategroup, &QPushButton::clicked, [this]() {
+//        auto request = QString("6 %1 ").arg("group_name");
+//        for (auto i = this->list_map->begin(); i != this->list_map->end(); ++i) {
+//            request += (i.key() + " ");
+//        }
+//        //别忘了自己也是群聊成员
+//        request += this->acc_name;
+//        this->client->write(request.toStdString().c_str());
+          auto friends = QVector<QString>();
+          for (auto i = this->list_map->begin(); i != this->list_map->end(); ++i) {
+              if (!this->group_set->contains(i.key())) {
+                friends.push_back(i.key());
+              }
+          }
+          friends.push_back(this->acc_name);
+          this->create_group = new CreateGroup(friends, this->client);
+          this->create_group->show();
+    });
 }
 
 ChatWindow::~ChatWindow()
@@ -109,6 +143,19 @@ ChatWindow::~ChatWindow()
 
 void ChatWindow::addFriend(const QString& friend_acc)
 {
+    qDebug() << "friend to be added: " << friend_acc;
+    if (friend_acc.startsWith("__group__")) {
+        auto real_group_name = friend_acc.mid(9, friend_acc.size());
+        auto item = new QListWidgetItem(QIcon(":/img/group_icon.png"), real_group_name);
+        this->friends_list->addItem(item);
+        qDebug() << real_group_name << " is added!";
+        auto chats = new QListWidget(this);
+        chats->setGeometry(this->ui->msg_area->geometry());
+        this->list_map->insert(real_group_name, chats);
+        this->list_map->value(real_group_name)->hide();
+        this->group_set->insert(real_group_name);
+        return;
+    }
     this->friends_list->addItem(friend_acc);
     auto chats = new QListWidget(this);
     chats->setGeometry(this->ui->msg_area->geometry());
@@ -136,7 +183,7 @@ Ui::ChatWindow* ChatWindow::get_ui()
 
 void ChatWindow::send_msg()
 {
-    auto msg = this->ui->edit_text->toPlainText();
+    auto msg = this->acc_name + ": " + this->ui->edit_text->toPlainText();
     if (this->target_name == "") {
         //未选择聊天对象
         QApplication::beep();
@@ -153,10 +200,12 @@ void ChatWindow::send_msg()
     }
     char request[2048];
     this->ui->edit_text->clear();
+
     //从何而来的消息，去到哪，内容是什么
     sprintf(request, "4 %s %s %s",
             this->acc_name.toStdString().c_str(),
-            this->target_name.toStdString().c_str(),
+            group_set->contains(target_name)? (QString("__group__") + target_name).toStdString().c_str()
+                                            : target_name.toStdString().c_str(),
             msg.toStdString().c_str()
             );
     //如果当前好友还没有与之对应的聊天窗口

@@ -6,6 +6,10 @@
 #include <QVector>
 #include <QCheckBox>
 #include <QTcpSocket>
+#include <QListWidget>
+#include <QPropertyAnimation>
+#include <QMouseEvent>
+#include "loginhint.h"
 
 namespace Ui {
 class CreateGroup;
@@ -22,6 +26,16 @@ public:
 private:
     Ui::CreateGroup *ui;
     QTcpSocket* client;
+    QSet<QCheckBox*>* friends_set;
+    QPropertyAnimation* animation;
+    QPoint z;
+    QString myself;
+private slots:
+    void send_create_group_request();
+protected:
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 };
 
 #endif // CREATEGROUP_H

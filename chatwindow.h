@@ -9,7 +9,7 @@
 #include <QStandardItemModel>
 #include <QTcpSocket>
 #include <QPropertyAnimation>
-
+#include <creategroup.h>
 #include "msgbubble.h"
 #include "loginhint.h"
 
@@ -43,6 +43,8 @@ private:
     QPoint z;
     QPropertyAnimation* animation_close;
     QPropertyAnimation* animation_minimize;
+    CreateGroup* create_group;
+    QSet<QString>* group_set;
 private slots:
     void send_msg();
 protected:
