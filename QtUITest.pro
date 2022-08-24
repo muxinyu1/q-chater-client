@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     chatwindow.cpp \
     clickablelabel.cpp \
+    creategroup.cpp \
     friendcard.cpp \
     loginhint.cpp \
     loginwidget.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     chatwindow.h \
     clickablelabel.h \
+    creategroup.h \
     friendcard.h \
     loginhint.h \
     loginwidget.h \
@@ -37,6 +39,7 @@ HEADERS += \
 
 FORMS += \
     chatwindow.ui \
+    creategroup.ui \
     loginhint.ui \
     mainwindow.ui \
     signup.ui \

@@ -27,5 +27,6 @@
         <file>patterns/16.png</file>
         <file>patterns/17.png</file>
         <file>patterns/18.png</file>
+        <file>patterns/0.png</file>
     </qresource>
 </RCC>
